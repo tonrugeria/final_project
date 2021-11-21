@@ -30,12 +30,12 @@ const ListStudentComponents = () => {
     }
 
     return (
-        <div className="container">
-            <h2 className="text-center"> List of Students </h2>
+            <div className="container text-center">
+            <h2> List of Students </h2>
             <Link to="/add-student" className="btn btn-primary mb-2">Add Student</Link>
-            <table className="table table-bordered table-striped">
-                <thead className="text-center .thead-dark">
-                <   th> ID </th>
+            <table className="table table-hover table-bordered">
+                <thead className="bg-dark text-white">
+                    <th> ID </th>
                     <th> First Name </th>
                     <th> Last Name </th>
                     <th> Department </th>
