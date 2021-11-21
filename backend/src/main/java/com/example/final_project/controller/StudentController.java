@@ -42,6 +42,8 @@ public class StudentController {
 
         updateStudent.setFirstName(studentDetails.getFirstName());
         updateStudent.setLastName(studentDetails.getLastName());
+        updateStudent.setDepartment(studentDetails.getDepartment());
+        updateStudent.setCourse(studentDetails.getCourse());
         updateStudent.setAddress(studentDetails.getAddress());
         updateStudent.setPhone(studentDetails.getPhone());
         updateStudent.setEmailId(studentDetails.getEmailId());
