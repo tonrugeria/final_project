@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+import StudentService from '../services/StudentService'
 
 
 const AddStudentComponent = () => {
@@ -10,11 +12,25 @@ const AddStudentComponent = () => {
     const [course, setCourse] = useState('')
     const [department, setDepartment] = useState('')
 
+    const navigate = useNavigate();
+
     const saveStudent = (e) => {
         e.preventDefualt();
         const student = {firstName, lastName, address, phone, emailId, department, course}
         console.log(student);
+        
+        StudentService.createStudent(student).then((response => {
+            console.log(response.data)
+    
+            navigate('/students')
+        })).catch(error => {
+            console.log(error)
+        })  
+    
     }
+
+
+
     return (
         <div>
         <br /><br />
@@ -118,7 +134,7 @@ const AddStudentComponent = () => {
                             </div>
 
                             <button className="btn btn-success" onClick={(e) => saveStudent(e)}>Submit</button>
-                             
+                             <Link to="/students" className="btn btn-danger">Cancel</Link>
                         </form>
                     </div>
                 </div>
