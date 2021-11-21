@@ -23,4 +23,9 @@ public class StudentController {
         return studentRepository.findAll();
     }
 
+    @PostMapping
+    public Student createStudent(@RequestBody Student student) {
+        return studentRepository.save(student);
+    }
+
 }
