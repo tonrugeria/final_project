@@ -15,7 +15,8 @@ function App() {
               localhost:3000/students
               <Route exact path="/" element={<ListStudentsComponent/>}></Route>
               <Route path="/students" element={<ListStudentsComponent/>}></Route>
-              <Route path="/add-students" element={<AddStudentComponent/>}></Route>
+              <Route path="/add-student" element={<AddStudentComponent/>}></Route>
+              <Route path="/edit-student/:id" element={<AddStudentComponent/>}></Route>
             </Routes>
           </div>
         <FooterComponent />

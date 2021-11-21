@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useNavigate, Link, useParams } from 'react-router-dom'
 import StudentService from '../services/StudentService'
 
 
 const AddStudentComponent = () => {
+
     const [firstName, setfirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [address, setAddress] = useState('')
@@ -14,22 +15,52 @@ const AddStudentComponent = () => {
 
     const navigate = useNavigate();
 
-    const saveStudent = (e) => {
-        e.preventDefualt();
+    const {id} = useParams();
+
+    const saveOrUpdateStudent = (e) => {
+        e.preventDefault();
+
         const student = {firstName, lastName, address, phone, emailId, department, course}
-        console.log(student);
-        
-        StudentService.createStudent(student).then((response => {
-            console.log(response.data)
+
+        if(id) {
+            StudentService.updateStudent(id, student).then((response) => {
+                navigate('/students')
+            }).catch(error => {
+                console.log(error);
+            })
+        }else {
+            StudentService.createStudent(student).then((response => {
+                console.log(response.data)
     
-            navigate('/students')
-        })).catch(error => {
-            console.log(error)
-        })  
-    
+                navigate('/students')
+            })).catch(error => {
+                console.log(error)
+            })
+        }
     }
 
+    useEffect(() => {
+        StudentService.getStudentById(id).then((response) => {
+            setfirstName(response.data.firstName)
+            setLastName(response.data.lastName)
+            setAddress(response.data.address)
+            setPhone(response.data.phone)
+            setEmailId(response.data.emailId)
+            setCourse(response.data.course)
+            setDepartment(response.data.course)
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [id])
 
+    const title = () => {
+
+        if(id) {
+            return <h2 className="text-center">Update Student</h2>
+        }else {
+            return <h2 className="text-center">Add Student</h2>
+        }
+    }
 
     return (
         <div>
@@ -37,8 +68,9 @@ const AddStudentComponent = () => {
         <div className="container">
             <div className="row">
                 <div className="card col-md-6 offset-md-3 offset-md-3">
-                    <h2 className="text-center">Add Student</h2>
-
+                    {
+                        title()
+                    }
                     <div className="card-body">
                         <form>
                             <div className="form-group mb-2">
@@ -133,7 +165,7 @@ const AddStudentComponent = () => {
 
                             </div>
 
-                            <button className="btn btn-success" onClick={(e) => saveStudent(e)}>Submit</button>
+                            <button className="btn btn-success" onClick={(e) => saveOrUpdateStudent(e)}>Submit</button>
                              <Link to="/students" className="btn btn-danger">Cancel</Link>
                         </form>
                     </div>

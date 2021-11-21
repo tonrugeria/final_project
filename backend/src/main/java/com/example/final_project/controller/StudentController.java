@@ -51,6 +51,14 @@ public class StudentController {
         return ResponseEntity.ok(updateStudent);
     }
 
+    @DeleteMapping("{id}")
+    public ResponseEntity<HttpStatus> deleteStudent(@PathVariable long id) {
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Student not exist with id: " + id));
 
+        studentRepository.delete(student);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
 }
