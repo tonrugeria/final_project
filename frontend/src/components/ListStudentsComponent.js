@@ -34,21 +34,22 @@ const ListStudentComponents = () => {
             <h2 className="text-center"> List of Students </h2>
             <Link to="/add-student" className="btn btn-primary mb-2">Add Student</Link>
             <table className="table table-bordered table-striped">
-                <thead>
-                <   th> Student Id </th>
-                    <th> Student First Name </th>
-                    <th> Student Last Name </th>
-                    <th> Student Department </th>
-                    <th> Student Course </th>
-                    <th> Student Address </th>
-                    <th> Student Phone </th>
-                    <th> Student Email Id </th>
+                <thead className="text-center">
+                <   th> ID </th>
+                    <th> First Name </th>
+                    <th> Last Name </th>
+                    <th> Department </th>
+                    <th> Course </th>
+                    <th> Address </th>
+                    <th> Phone </th>
+                    <th> Email </th>
+                    <th> Action </th>
                 </thead>
                 <tbody>
                     {
                         students.map(
                             student =>
-                            <tr key={student.id}>
+                            <tr className="text-center" key={student.id}>
                                 <td> {student.id} </td>
                                 <td> {student.firstName} </td>
                                 <td> {student.lastName} </td>
