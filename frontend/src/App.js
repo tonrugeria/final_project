@@ -1,6 +1,6 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import FooterComponent from './components/FooterComponent';
+// import FooterComponent from './components/FooterComponent';
 import HeaderComponent from './components/HeaderComponent';
 import ListStudentsComponent from './components/ListStudentsComponent';
 import AddStudentComponent from './components/AddStudentComponent';
@@ -20,7 +20,8 @@ function App() {
               <Route path="/edit-student/:id" element={<AddStudentComponent/>}></Route>
             </Routes>
           </div>
-        <FooterComponent />
+
+        {/* <FooterComponent /> */}
       </Router>
     </div>
   );
