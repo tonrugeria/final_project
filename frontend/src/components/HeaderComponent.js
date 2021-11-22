@@ -14,7 +14,9 @@ const HeaderComponent = () => {
                         <img src={Logo} alt="Logo" />
                         </a>
 
-                        <Link to="/students" className="btn btn-danger">Students</Link>
+                        <Link to="/students" className="btn btn-danger" style={{marginRight: "25px"}}>Students</Link>
+                        <Link to="/teachers" className="btn btn-secondary" style={{marginRight: "25px"}}>Teachers</Link>
+                        <Link to="/subjects" className="btn btn-danger" style={{marginRight: "25px"}}>Subjects</Link>
                     </div>
                 </nav>
             </header>

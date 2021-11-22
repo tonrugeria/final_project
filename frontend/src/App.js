@@ -5,6 +5,7 @@ import HeaderComponent from './components/HeaderComponent';
 import ListStudentsComponent from './components/ListStudentsComponent';
 import AddStudentComponent from './components/AddStudentComponent';
 import Home from './components/Home';
+import ListSubjectsComponent from './components/ListSubjectsComponent';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path="/students" element={<ListStudentsComponent/>}></Route>
               <Route path="/add-student" element={<AddStudentComponent/>}></Route>
               <Route path="/edit-student/:id" element={<AddStudentComponent/>}></Route>
+              <Route path="/subjects" element={<ListSubjectsComponent/>}></Route>
             </Routes>
           </div>
 
