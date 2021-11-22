@@ -10,11 +10,11 @@ const HeaderComponent = () => {
             <header>
                 <nav className="navbar navbar-expand-md">
                     <div>
-                        <a href="https://www.hau.edu.ph/" className="navbar-brand">
+                        <a href="/" className="navbar-brand">
                         <img src={Logo} alt="Logo" />
                         </a>
 
-                        <Link to="/students" className="btn btn-danger">Student</Link>
+                        <Link to="/students" className="btn btn-danger">Students</Link>
                     </div>
                 </nav>
             </header>

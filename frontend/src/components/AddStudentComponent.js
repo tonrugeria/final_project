@@ -24,6 +24,8 @@ const AddStudentComponent = () => {
 
         if(id) {
             StudentService.updateStudent(id, student).then((response) => {
+                console.log(response.data)
+    
                 navigate('/students')
             }).catch(error => {
                 console.log(error);
