@@ -5,7 +5,9 @@ import SubjectService from '../services/SubjectService'
 
 const AddSubjectComponent = () => {
 
-    const [subject, setSubject] = useState('')
+    const [subjectName, setSubjectName] = useState('')
+    const [units, setUnits] = useState('')
+
 
     const navigate = useNavigate();
 
@@ -14,10 +16,10 @@ const AddSubjectComponent = () => {
     const saveOrUpdateSubject = (e) => {
         e.preventDefault();
 
-        const subjects = {subject}
+        const subject = {subjectName, units}
 
         if(id) {
-            SubjectService.updateSubject(id, subjects).then((response) => {
+            SubjectService.updateSubject(id, subject).then((response) => {
                 console.log(response.data)
     
                 navigate('/subjects')
@@ -25,7 +27,7 @@ const AddSubjectComponent = () => {
                 console.log(error);
             })
         }else {
-            SubjectService.createStudent(subjects).then((response => {
+            SubjectService.createSubject(subject).then((response => {
                 console.log(response.data)
     
                 navigate('/subjects')
@@ -37,7 +39,8 @@ const AddSubjectComponent = () => {
 
     useEffect(() => {
         SubjectService.getSubjectById(id).then((response) => {
-            setSubject(response.data.subject)
+            setSubjectName(response.data.subject)
+            setUnits(response.data.value)
         }).catch(error => {
             console.log(error)
         })
@@ -69,13 +72,25 @@ const AddSubjectComponent = () => {
                                 <input
                                     type = "text"
                                     placeholder = "Enter Subject"
-                                    name = "subjectId"
+                                    name = "subjectName"
                                     className = "form-control"
-                                    value = {subject}
-                                    onChange = {(e) => setSubject(e.target.value)}
+                                    value = {subjectName}
+                                    onChange = {(e) => setSubjectName(e.target.value)}
                                 >
                                 </input>
+                            </div>
 
+                            <div className="form-group mb-2">
+                                <lable className="form-label"> Units: </lable>
+                                <input
+                                    type = "text"
+                                    placeholder = "Enter Units"
+                                    name = "units"
+                                    className = "form-control"
+                                    value = {units}
+                                    onChange = {(e) => setUnits(e.target.value)}
+                                >
+                                </input>
                             </div>
 
                             <button className="btn btn-success" onClick={(e) => saveOrUpdateSubject(e)}>Submit</button>

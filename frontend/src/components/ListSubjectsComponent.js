@@ -37,6 +37,7 @@ const ListSubjectsComponents = () => {
                 <thead className="bg-dark text-white">
                     <th> ID </th>
                     <th> Subject </th>
+                    <th> Units </th>
                     <th> Action </th>
                 </thead>
                 <tbody>
@@ -45,7 +46,8 @@ const ListSubjectsComponents = () => {
                             subject =>
                             <tr className="text-center" key={subject.id}>
                                 <td> {subject.id} </td>
-                                <td> {subject.subject} </td>
+                                <td> {subject.subjectName} </td>
+                                <td> {subject.units} </td>
 
                                 <td>
                                     <Link className="btn btn-info" to={`/edit-subject/${subject.id}`} >Update</Link>
