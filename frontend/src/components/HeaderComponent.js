@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Logo from '../img/haulogo_2018.png'
+import Logo from '../img/hau.png'
 import '../../src/App.css'
 
 
